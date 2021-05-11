@@ -47,7 +47,8 @@ jobs:
             ${{ env.img }} \
             bash -exc '${{ env.py }} -m pip install virtualenv && ${{ env.py }} -m venv .env && \
             source .env/bin/activate && \
-            cwget https://www.openssl.org/source/openssl-1.1.1.tar.gz && \
+            yum install -y wget && \
+            wget https://www.openssl.org/source/openssl-1.1.1.tar.gz && \
             tar -xvzf openssl-1.1.1.tar.gz && \
             cd openssl-1.1.1/ && \
             ./Configure linux-aarch64 --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib && \

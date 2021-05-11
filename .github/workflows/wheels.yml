@@ -47,7 +47,7 @@ jobs:
             ${{ env.img }} \
             bash -exc '${{ env.py }} -m pip install virtualenv && ${{ env.py }} -m venv .env && \
             source .env/bin/activate && \
-            yum install -y wget && \
+            yum install -y wget install libz-devel && \
             wget https://www.openssl.org/source/openssl-1.1.1.tar.gz && \
             tar -xvzf openssl-1.1.1.tar.gz && \
             cd openssl-1.1.1/ && \

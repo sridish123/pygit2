@@ -53,10 +53,10 @@ jobs:
             cd openssl-1.1.1/ && \
             ./Configure linux-aarch64 --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib && \
             make -j$(($(nproc)+1)) && \
-            sudo make install && \
-            sudo echo 'LD_LIBRARY_PATH=/usr/local/ssl/lib:${LD_LIBRARY_PATH}' >> /etc/environment && \
+            make install && \
+            echo 'LD_LIBRARY_PATH=/usr/local/ssl/lib:${LD_LIBRARY_PATH}' >> /etc/environment && \
             rm openssl-1.1.1.tar.gz && \
-            sudo rm openssl-1.1.1 -r && \
+            rm openssl-1.1.1 -r && \
             deactivate'
 
   macos:

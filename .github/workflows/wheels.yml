@@ -55,7 +55,7 @@ jobs:
             make -j$(($(nproc)+1)) && \
             make install && \
             echo 'LD_LIBRARY_PATH=/usr/local/ssl/lib:${LD_LIBRARY_PATH}' >> /etc/environment && \
-            rm openssl-1.1.1.tar.gz && \
+            cd .. && rm openssl-1.1.1.tar.gz && \
             rm openssl-1.1.1 -r && \
             deactivate'
 

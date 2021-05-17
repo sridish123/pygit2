@@ -10,7 +10,7 @@ env:
 
 jobs:
   linux:
-    name: Linux aarch64
+    name: Linux
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout pygit2
@@ -29,35 +29,19 @@ jobs:
     name: "Test ${{ matrix.pyver }} aarch64 build wheel"
     strategy:
       matrix:
-        pyver: [cp37-cp37m]
         arch: [aarch64]
     runs-on: ubuntu-latest
     env:
       py: /opt/python/${{ matrix.pyver }}/bin/python
-      img: quay.io/pypa/manylinux2014_${{ matrix.arch }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up QEMU
       id: qemu
       uses: docker/setup-qemu-action@v1
-    - name: Install dependencies
-      run: |
-            docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
-            ${{ env.img }} \
-            bash -exc '${{ env.py }} -m pip install virtualenv && ${{ env.py }} -m venv .env && \
-            source .env/bin/activate && \
-            yum install -y wget zlib-devel && \
-            wget https://www.openssl.org/source/openssl-1.1.1.tar.gz && \
-            tar -xvzf openssl-1.1.1.tar.gz && \
-            cd openssl-1.1.1/ && \
-            ./Configure linux-aarch64 --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib && \
-            make -j$(($(nproc)+1)) && \
-            make install && \
-            echo 'LD_LIBRARY_PATH=/usr/local/ssl/lib:${LD_LIBRARY_PATH}' >> /etc/environment && \
-            cd .. && rm openssl-1.1.1.tar.gz && \
-            rm openssl-1.1.1 -r && \
-            deactivate'
+    - run: |
+        /bin/sh travis/build-all-manylinux-wheels.sh
+         
 
   macos:
     name: macos-${{ matrix.py.ver }}

@@ -40,7 +40,7 @@ jobs:
       id: qemu
       uses: docker/setup-qemu-action@v1
     - run: |
-        /bin/sh travis/build-all-manylinux-wheels.sh
+        /bin/sh travis/build-all-manylinux-wheels-aarch64.sh
          
 
   macos:

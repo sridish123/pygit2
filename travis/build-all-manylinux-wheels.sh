@@ -3,12 +3,10 @@
 set -x
 set -e
 
+echo $1
+
 # Wait for docker pull to complete downloading container
-if [ `uname -m` == 'aarch64' ]; then
-  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_aarch64"
-else
-  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_x86_64"
-fi
+manylinux_image="ghcr.io/pyca/cryptography-manylinux2014$1"
 docker pull "${manylinux_image}" &
 wait
 

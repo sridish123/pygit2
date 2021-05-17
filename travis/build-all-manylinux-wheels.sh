@@ -5,9 +5,9 @@ set -e
 
 # Wait for docker pull to complete downloading container
 if [ `uname -m` == 'aarch64' ]; then
-  manylinux_image="quay.io/pypa/manylinux2014_aarch64"
-else
   manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_aarch64"
+else
+  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_x86_64"
 fi
 docker pull "${manylinux_image}" &
 wait

@@ -12,7 +12,7 @@ export PKG_CONFIG_PATH="${OPENSSL_PATH}/lib/pkgconfig:${PYCA_OPENSSL_PATH}/lib/p
 # Install requirements
 uname -m
 yum -y update
-yum -y install git libffi-devel cmake3
+yum -y install git libffi-devel cmake
 yum -y install openssl wget
 
 # Copy source directory so we don't mangle with it

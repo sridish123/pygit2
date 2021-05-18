@@ -23,8 +23,8 @@ jobs:
       if: ${{ matrix.arch == 'aarch64' }}
       name: Set up QEMU
 
-    - name: x86_64 wheels
-      run: /bin/sh travis/build-all-manylinux-wheels.sh ${matrix.arch}
+    - name: wheels
+      run: /bin/sh travis/build-all-manylinux-wheels.sh "${matrix.arch}"
 
     - name: Save wheels
       uses: actions/upload-artifact@v2

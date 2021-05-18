@@ -3,10 +3,10 @@
 set -x
 set -e
 
-arch="${1}"
+ARCH="${1:-x86_64}"
 
 # Wait for docker pull to complete downloading container
-manylinux_image="ghcr.io/pyca/cryptography-manylinux2014${arch}"
+manylinux_image="ghcr.io/pyca/cryptography-manylinux2014${ARCH}"
 docker pull "${manylinux_image}" &
 wait
 

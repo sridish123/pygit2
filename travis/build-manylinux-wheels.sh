@@ -10,10 +10,13 @@ export CFLAGS="-fPIC"
 export PKG_CONFIG_PATH="${OPENSSL_PATH}/lib/pkgconfig:${PYCA_OPENSSL_PATH}/lib/pkgconfig"
 
 # Install requirements
-uname -m
-yum -y update
-yum -y install git libffi-devel cmake
+yum -y install git libffi-devel
 yum -y install openssl wget
+if [ ${ARCH} == 'aarch64' ]; then
+  yum -y install cmake
+else
+  yum -y install cmake3
+fi
 
 # Copy source directory so we don't mangle with it
 SRC_DIR=/io/src

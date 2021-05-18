@@ -36,25 +36,7 @@ jobs:
       with:
         name: wheels
         path: dist/*.whl
-        
-  build-aarch64:
-    name: "Test ${{ matrix.pyver }} aarch64 build wheel"
-    strategy:
-      matrix:
-        arch: [aarch64]
-    runs-on: ubuntu-latest
-    env:
-      py: /opt/python/${{ matrix.pyver }}/bin/python
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up QEMU
-      id: qemu
-      uses: docker/setup-qemu-action@v1
-    - run: |
-        /bin/sh travis/build-all-manylinux-wheels.sh _aarch64
          
-
   macos:
     name: macos-${{ matrix.py.ver }}
     runs-on: macos-latest

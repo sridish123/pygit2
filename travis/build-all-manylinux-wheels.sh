@@ -3,9 +3,9 @@
 set -x
 set -e
 
-echo $1
+a=$1
 
-ARCH="${1:1}"
+ARCH="${a:1}"
 
 echo $ARCH
 

@@ -5,7 +5,7 @@ set -e
 
 echo $1
 
-ARCH="${1:-x86_64}"
+ARCH="${1:1}"
 
 echo $ARCH
 

@@ -3,10 +3,15 @@
 set -x
 set -e
 
-a=$1
+#a=$1
 
-ARCH="${a:1}"
+#ARCH="${a:1}"
 
+#echo $ARCH
+
+arch=$1
+
+ARCH="${arch:1}"
 echo $ARCH
 
 # Wait for docker pull to complete downloading container

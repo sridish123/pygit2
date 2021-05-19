@@ -7,11 +7,11 @@ ARCH=$1
 
 # Wait for docker pull to complete downloading container
 if [ $ARCH == 'aarch64' ]; then
-  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_${ARCH}"
+  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014\_${ARCH}"
   echo "inside aarch64"
   echo $manylinux_image
 else
-  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014:${ARCH}"
+  manylinux_image="ghcr.io/pyca/cryptography-manylinux2014\:${ARCH}"
   echo "inside x86"
   echo $manylinux_image
 fi

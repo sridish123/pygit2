@@ -10,7 +10,7 @@ ARCH="${1:-x86_64}"
 echo $ARCH
 
 # Wait for docker pull to complete downloading container
-manylinux_image="ghcr.io/pyca/cryptography-manylinux2014${ARCH}"
+manylinux_image="ghcr.io/pyca/cryptography-manylinux2014_${ARCH}"
 docker pull "${manylinux_image}" &
 wait
 
